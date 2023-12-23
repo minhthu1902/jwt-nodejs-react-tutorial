@@ -1,0 +1,5 @@
+//file de cau hinh trinh duyet code, can trinh dich code de khong co loi vi nhieu khi js co nhieu version khac nhau
+
+{
+  "presets": ["@babel/preset-env"]
+}
