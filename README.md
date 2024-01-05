@@ -1,0 +1,1 @@
+This tutorial project is about building the backend database on user database creating based on CRUD, nodejs and express as its framework, XAMPP where we record the user data input (username, email and password)

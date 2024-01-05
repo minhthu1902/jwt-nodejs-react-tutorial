@@ -1,3 +1,9 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // get the client
 import mysql from 'mysql2';
 // create the connection to database
@@ -22,17 +28,19 @@ const handleCreateNewUser = (req, res) => {
 
 
   connection.query(
-    'INSERT INTO users ("email", "password", "username") VALUES (?, ?, ?)', [email, password, username],
+    'INSERT INTO users (`email`, `password`, `username`) VALUES (?, ?, ?)',
+    [email, password, username],
     function(err, results, fields) {
       if (err) {
-        console.log(err)
+        console.log(err);
+        return res.status(500).send("Error while creating a new user");
       }
+      console.log(">>> check request: ", req.body);
+      console.log("New user created:", results);
+      return res.status(201).send("User created successfully");
     }
   );
-  console.log(">>> check request: ",req.body);
-  return res.send("handleCreateNewUser");
-}
-
+};
 
 module.exports = {
   handleHelloWorld,
